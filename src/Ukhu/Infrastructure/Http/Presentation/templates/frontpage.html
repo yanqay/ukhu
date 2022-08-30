@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Ukhu</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+    {% webpack_entry_css 'layout/frontpage/app' %}
+
+    {% block css %}{% endblock css %}
+
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+
+            <div class="container">
+                {% include "frontpage/nav.html" %}
+            </div>
+
+            <!-- Page content-->
+            <div class="container py-4 px-5">
+                <header>
+                    {% block header %}
+                    {% endblock header %}
+                </header>
+
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+
+    {% webpack_entry_js "layout/frontpage/app" %}
+
+    {% block js %}{% endblock js %}
+</body>
+
+</html>

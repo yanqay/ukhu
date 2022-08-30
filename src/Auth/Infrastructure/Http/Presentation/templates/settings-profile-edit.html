@@ -1,0 +1,40 @@
+{% block content %}
+
+<form action="/admin/settings/profile/edit" method="post" enctype="multipart/form-data">
+    <p>Update your photo and personal details here.</p>
+    <div class="row mb-3">
+        <label for="image" class="col-sm-3 col-form-label">Profile Image</label>
+        <div class="col-sm-9">
+            <input type="file" class="form-control" name="image" id="image" placeholder="Upload image" aria-describedby="fileHelpId">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="username" class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input value="{{ user.username }}" type="text" class="form-control" name="username" id="username" aria-describedby="usernameHelpId" placeholder="Enter username">
+            </div>
+            <small id="usernameHelpId" class="form-text text-muted">{{ url('/user/' ~ user.username) }}</small>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="email" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
+            <input value="{{ user.email }}" type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Enter email">
+            <small class="form-text text-muted">a confirmation message will be sent to this email when changed</small>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+
+{% block js %}
+<script>
+    console.log('2nd print')
+</script>
+{% endblock %}

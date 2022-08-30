@@ -1,0 +1,11 @@
+{% block content %}
+<form action="/admin/settings/profile/deactivate" method="post">
+    <p>
+        To deactivate your account click on "Deactivate" button.
+        <br>Beware this process <b>can not be undone</b>.
+        <br>Ipsum, dolor sit amet consectetur adipisicing elit. Veritatis in quam dolorem quasi voluptatibus iusto cumque, quo a natus eligendi enim incidunt cupiditate nostrum modi beatae suscipit deserunt tempora ipsa.
+    </p>
+    <input type="hidden" class="form-control" name="deactivate" id="deactivate">
+    <button type="submit" class="btn btn-primary">Deactivate</button>
+</form>
+{% endblock %}

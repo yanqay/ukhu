@@ -1,0 +1,16 @@
+{% extends "backoffice.html" %}
+
+{% block header %}
+<h1 class="display-5">admin</h1>
+{% endblock header %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+
+    Welcome {{ session.user.email }}
+
+    </div>
+</div>
+
+{% endblock content %}

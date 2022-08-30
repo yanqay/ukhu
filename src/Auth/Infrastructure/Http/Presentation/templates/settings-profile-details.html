@@ -1,0 +1,19 @@
+{% block content %}
+<div class="pill">
+    <div class="user-image">
+        {% if user.profile_picture %}
+        <img width="100" height="100" src="{{ url('/images/'  ~ user.profile_picture) }}" alt="">
+        {% else %}
+        <div class="user_letter">{{ user.user_letter }}</div>
+        {% endif %}
+    </div>
+    <div class="title">
+        {{ user.username }}
+    </div>
+    <div class="meta">
+        <div class="email">
+            {{ user.email }}
+        </div>
+    </div>
+</div>
+{% endblock %}

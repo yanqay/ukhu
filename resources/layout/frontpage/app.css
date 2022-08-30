@@ -1,0 +1,41 @@
+body {
+    color: #666;
+    background-color: #F3F7FA;
+}
+a {
+    text-decoration: none;
+}
+a.active {
+    font-weight: bold;
+}
+#page-content-wrapper {
+    width: 100%;
+}
+
+/* headings */
+.title{
+    line-height: 0.9em;
+    font-weight: normal;
+    letter-spacing: -20px;
+}
+.title-1{
+    font-size: 20em;
+}
+
+.title-2{
+    font-size: 15em;
+}
+
+.title-3{
+    font-size: 10em;
+}
+
+/* content */
+.content {
+    display: block;
+    padding: 40px 0;
+}
+
+#wrapper {
+    overflow-x: hidden;
+}

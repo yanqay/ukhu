@@ -1,0 +1,42 @@
+{
+  "name": "yanqay/ukhu",
+  "description": "ukhu",
+  "keywords": [
+    "php",
+    "ukhu",
+    "framework"
+  ],
+  "homepage": "http://yanqay.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Franck Mercado",
+      "email": "franckmercado@gmail.com"
+    }
+  ],
+  "require": {
+    "league/route": "^4.5",
+    "php-di/php-di": "^6.2",
+    "twig/twig": "^3.0",
+    "vlucas/phpdotenv": "^5.1",
+    "laminas/laminas-diactoros": "^2.3",
+    "laminas/laminas-httphandlerrunner": "^1.2",
+    "filp/whoops": "^2.7",
+    "monolog/monolog": "^2.1",
+    "beberlei/assert": "^3.2",
+    "ramsey/uuid": "^4.1",
+    "psr7-sessions/storageless": "^7.0",
+    "lcobucci/jwt": "~3.3.0",
+    "fullpipe/twig-webpack-extension": "^4.0",
+    "phpmailer/phpmailer": "^6.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^0.12.37",
+    "phpunit/phpunit": "^8"
+  }
+}
