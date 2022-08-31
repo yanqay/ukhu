@@ -4,7 +4,7 @@ Ukhu is an opinionated open source web framework, focused on ease of use, config
 
 Quickly design and customize your web projects, featuring Routing, Middlewares, DI, Use Cases, DDD oriented, TDD friendly, prebuilt with front page and back office addons and based on powerful standards.
 
-Note: *Ukhu is currently under development.*
+Note: *Ukhu is currently under development. Used for educational purposes.*
 
 ## Contributing
 
