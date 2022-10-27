@@ -28,15 +28,15 @@ class DTOMapper
         // Iterate parameters and match them with $params array keys
         foreach ($reflectionParameters as $reflectionParameter) {
             $parameterName = $reflectionParameter->getName();
-            
+
             // If array key is not found in the constructor, throw exception
             if (!array_key_exists($parameterName, $params) && !$reflectionParameter->isOptional()) {
                 throw new \Exception(
-                    'Unable to instantiate \'' . $givenClass . '\' from given array. Argument "' . $parameterName .'" is missing. Only following arguments are available: ' . implode(', ', \array_keys($params)));
-                }
-                
-                $parameter = $params[$parameterName] ?? $reflectionParameter->getDefaultValue();
-                $parameters[] = $parameter;
+                    'Unable to instantiate \'' . $givenClass . '\' from given array. Argument "' . $parameterName . '" is missing. Only following arguments are available: ' . implode(', ', \array_keys($params))
+                );
+            }
+
+            $parameters[] = $params[$parameterName] ?? $reflectionParameter->getDefaultValue();
         }
 
         return new $givenClass(...$parameters);

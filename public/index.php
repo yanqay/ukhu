@@ -4,6 +4,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $container = require_once __DIR__ . '/../bootstrap/container.php';
 
+// catching error_reporting php errors
+$env = $container->get(\App\Ukhu\Application\Ports\EnvInterface::class);
+$debug = $env->get('APP_DEBUG') === true ? true : false;
+if ($debug){
+    set_error_handler('error_handler_debug');
+} else {
+    set_error_handler('error_handler_prod');
+}
+
 $router = new \League\Route\Router;
 // app middleware
 $router = (require_once __DIR__ . '/../bootstrap/middleware.php')($router, $container);

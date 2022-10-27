@@ -62,6 +62,31 @@ class Log implements LoggerInterface
         $this->instance = $log;
     }
 
+    public static function init($message, $context)
+    {
+        $config = [
+            "enable" => true,
+            "channel" => 'web',
+            "directory" => '../var/logs'
+        ];
+        $obj = new self($config);
+        $obj->enable = $config['enable'];
+        $obj->channel = $config['channel'];
+        $obj->directory = $config['directory'];
+
+        $log = new \Monolog\Logger($obj->channel);
+
+        $currentDate = date('Y-m-d');
+        $logPath = $obj->directory . '/' . $currentDate . '.log';
+
+        $log->pushHandler(new \Monolog\Handler\StreamHandler(
+            $logPath,
+            \Monolog\Logger::DEBUG
+        ));
+
+        $log->info($message, $context);
+    }
+
     public function emergency($message, array $context = array())
     {
         if ($this->enable === true) {
