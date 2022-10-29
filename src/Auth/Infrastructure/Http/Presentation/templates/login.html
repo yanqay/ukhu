@@ -1,71 +1,57 @@
 {% extends "frontpage.html" %}
 
 {% block header %}
-<h1 class="display-5">login</h1>
+<h1 class="display-5 line">
+    <span>Login</span>
+</h1>
 {% endblock header %}
 
 {% block content %}
 <div class="row">
     <div class="col-12">
 
-      <form class="w-full max-w-sm" method="post">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+        <article>
+            <form class="w-full max-w-sm" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
 
-        <div class="md:flex md:items-center mb-3">
-          <div class="md:w-1/3">
-            <label
-              class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              for="inline-email"
-            >
-              Email
-            </label>
-          </div>
-          <div class="md:w-2/3">
-            <input
-              name="email"
-              class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-email"
-              type="text"
-              placeholder="email"
-            />
-          </div>
-        </div>
-        <div class="md:flex md:items-center mb-3">
-          <div class="md:w-1/3">
-            <label
-              class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              for="inline-password"
-            >
-              Password
-            </label>
-          </div>
-          <div class="md:w-2/3">
-            <input
-              name="password"
-              class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-              id="inline-password"
-              type="password"
-              placeholder="Your password"
-            />
-          </div>
-        </div>
-        <div class="md:flex md:items-center">
-          <div class="md:w-1/3"></div>
-          <div class="md:w-2/3">
-            <button
-              name="submit"
-              data-action="js_submit"
-              class="btn btn-dark py-2 px-4"
-              type="submit"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-        <div class="md:flex md:items-center">
-          <div class="error_msg"></div>
-        </div>
-      </form>
+                <div class="md:flex md:items-center mb-3">
+                    <div class="md:w-1/3">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-email">
+                            Email
+                        </label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input name="email"
+                            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                            id="inline-email" type="text" placeholder="email" />
+                    </div>
+                </div>
+                <div class="md:flex md:items-center mb-3">
+                    <div class="md:w-1/3">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+                            for="inline-password">
+                            Password
+                        </label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input name="password"
+                            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                            id="inline-password" type="password" placeholder="Your password" />
+                    </div>
+                </div>
+                <div class="md:flex md:items-center">
+                    <div class="md:w-1/3"></div>
+                    <div class="md:w-2/3">
+                        <button name="submit" data-action="js_submit" class="btn btn-dark py-2 px-4" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+                <div class="md:flex md:items-center">
+                    <div class="error_msg"></div>
+                </div>
+            </form>
+        </article>
 
     </div>
 </div>
@@ -74,83 +60,83 @@
 
 {% block js %}
 <script type="text/javascript">
-  window.addEventListener("DOMContentLoaded", function() {
-    let passwordInput = document.querySelector('input[name="password"]');
-    let submitBtn = document.querySelector('[data-action="js_submit"]');
-    let loadingImg =
-      '<img class="w-6 inline-block pl-2" src="/assets/images/loading.svg" alt="loading">';
+    window.addEventListener("DOMContentLoaded", function () {
+        let passwordInput = document.querySelector('input[name="password"]');
+        let submitBtn = document.querySelector('[data-action="js_submit"]');
+        let loadingImg =
+            '<img class="w-6 inline-block pl-2" src="/assets/images/loading.svg" alt="loading">';
 
-    // submit login form
-    submitBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      let email = document.getElementsByName("email"),
-        password = document.getElementsByName("password"),
-        csrfToken = document.getElementsByName("csrf_token");
+        // submit login form
+        submitBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            let email = document.getElementsByName("email"),
+                password = document.getElementsByName("password"),
+                csrfToken = document.getElementsByName("csrf_token");
 
-      if (!csrfToken.length || !csrfToken[0].value) {
-        console.log("Not allowed");
-        return false;
-      }
+            if (!csrfToken.length || !csrfToken[0].value) {
+                console.log("Not allowed");
+                return false;
+            }
 
-      if (!email.length || !email[0].value) {
-        console.log("Email missing");
-        return false;
-      }
+            if (!email.length || !email[0].value) {
+                console.log("Email missing");
+                return false;
+            }
 
-      let formData = new FormData();
-      formData.append("email", email[0].value);
-      formData.append("csrf_token", csrfToken[0].value);
-      formData.append("password", password[0].value);
+            let formData = new FormData();
+            formData.append("email", email[0].value);
+            formData.append("csrf_token", csrfToken[0].value);
+            formData.append("password", password[0].value);
 
-      let url = "login";
+            let url = "login";
 
-      submitBtn.disabled = true;
-      this.innerHTML = this.innerHTML + " " + loadingImg;
-      submitForm({
-        url: url,
-        formData: formData,
-      });
-    });
-
-    async function submitForm({ url = "", formData = {} }) {
-      const response = await fetch(url, {
-        method: "POST",
-        body: formData,
-      })
-        .then(function(response){
-          return response.json()
-        })
-        .then(function(response) {
-          if (response.error) {
-            // display login error message
-            document.getElementsByClassName("error_msg")[0].innerHTML = response.error.title;
-
-            // reset submit button
-            var submitBtn = document.querySelector('[data-action="js_submit"]');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "Retry";
-          } else {
-            // redirect
-            window.location.replace("{{ app_url }}/admin");
-          }
-        })
-        .catch(function(response) {
-          return;
+            submitBtn.disabled = true;
+            this.innerHTML = this.innerHTML + " " + loadingImg;
+            submitForm({
+                url: url,
+                formData: formData,
+            });
         });
 
-      //return response.json(); // parses JSON response into native JavaScript objects
-    }
-  });
+        async function submitForm({ url = "", formData = {} }) {
+            const response = await fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (response) {
+                    if (response.error) {
+                        // display login error message
+                        document.getElementsByClassName("error_msg")[0].innerHTML = response.error.title;
+
+                        // reset submit button
+                        var submitBtn = document.querySelector('[data-action="js_submit"]');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = "Retry";
+                    } else {
+                        // redirect
+                        window.location.replace("{{ app_url }}/admin");
+                    }
+                })
+                .catch(function (response) {
+                    return;
+                });
+
+            //return response.json(); // parses JSON response into native JavaScript objects
+        }
+    });
 </script>
 {% endblock js %}
 
 {% block css %}
 <style>
-  input:disabled,
-  input:disabled:hover {
-    background-color: lightgrey;
-    border: lightgrey;
-    cursor: not-allowed;
-  }
+    input:disabled,
+    input:disabled:hover {
+        background-color: lightgrey;
+        border: lightgrey;
+        cursor: not-allowed;
+    }
 </style>
 {% endblock css %}

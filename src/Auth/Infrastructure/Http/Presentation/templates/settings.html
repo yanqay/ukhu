@@ -1,11 +1,13 @@
 {% extends "backoffice.html" %}
 
 {% block header %}
-<h1 class="display-5">settings</h1>
+<h1 class="display-5 line">
+    <span>Settings</span>
+</h1>
 {% endblock header %}
 
 {% block content %}
-<main class="row ">
+<div class="row ">
     <div class="col-8">
         <div class="shadow-sm p-4 mb-5 bg-body rounded">
 
@@ -51,7 +53,6 @@
         </div>
     </div>
 </div>
-</main>
 {% endblock content %}
 
 {% block js %}
