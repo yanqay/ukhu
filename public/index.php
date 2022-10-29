@@ -17,10 +17,7 @@ $router = new \League\Route\Router;
 // app middleware
 $router = (require_once __DIR__ . '/../bootstrap/middleware.php')($router, $container);
 // routes
-$router = (require_once __DIR__ . '/../bootstrap/routes/web.php')($router, $container);
-$router = (require_once __DIR__ . '/../bootstrap/routes/ukhu.php')($router, $container);
-$router = (require_once __DIR__ . '/../bootstrap/routes/admin.php')($router, $container);
-$router = (require_once __DIR__ . '/../bootstrap/routes/auth.php')($router, $container);
+$router = (require_once __DIR__ . '/../bootstrap/routes.php')($router, $container);
 
 $strategy = new League\Route\Strategy\ApplicationStrategy;
 $strategy->setContainer($container);
