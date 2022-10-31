@@ -1,0 +1,37 @@
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Output\OutputInterface;
+
+$app = new Silly\Edition\PhpDi\Application();
+
+$app->command('module:install [name]', function ($name, OutputInterface $output) {
+    if($name === 'blog'){
+        $source = __DIR__ . "/vendor/yanqay/ukhu-blog/src/Blog";
+        $destination = __DIR__ . "/src";
+        shell_exec("mkdir -p $destination 2>/dev/null");
+        shell_exec("cp -R $source $destination 2>/dev/null");
+
+        $source = __DIR__ . "/vendor/yanqay/ukhu-blog/resources/blog";
+        $destination = __DIR__ . "/resources";
+        shell_exec("mkdir -p $destination 2>/dev/null");
+        shell_exec("cp -R $source $destination 2>/dev/null");
+
+        $source = __DIR__ . "/vendor/yanqay/ukhu-blog/bootstrap/routes/blog.php";
+        $destination = __DIR__ . "/bootstrap/routes";
+        shell_exec("mkdir -p $destination 2>/dev/null");
+        shell_exec("cp -R $source $destination 2>/dev/null");
+
+        $message = <<<TEXT
+        Blog module succesfully installed!
+        TEXT;
+
+        $output->writeln($message);
+    } else {
+        $message = "Error. Unrecognized Ukhu module.";
+        $output->writeln($message);
+    }
+});
+
+$app->run();
