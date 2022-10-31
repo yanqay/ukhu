@@ -28,7 +28,8 @@
     "psr7-sessions/storageless": "^7.0",
     "lcobucci/jwt": "~3.3.0",
     "fullpipe/twig-webpack-extension": "^4.0",
-    "phpmailer/phpmailer": "^6.6"
+    "phpmailer/phpmailer": "^6.6",
+    "mnapoli/silly-php-di": "^1.2"
   },
   "autoload": {
     "psr-4": {
